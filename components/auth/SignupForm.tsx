@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SignupUserSchema } from "@/models/zod/auth";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import GoogleBtn from "./GoogleBtn";
 
 const newUserInitialState = {
   name: "",
@@ -38,8 +39,6 @@ export default function SignupForm() {
     setErrors([]);
 
     const zodRes = SignupUserSchema.safeParse(newUser);
-
-    console.log(zodRes.error?.issues);
 
     if (!zodRes.success) {
       zodRes.error.issues.forEach((error) => setErrors((prevState) => [...prevState, error.message]));
@@ -124,6 +123,8 @@ export default function SignupForm() {
           </Link>
         </span>
       </div>
+      <hr className="border" />
+      <GoogleBtn />
     </form>
   );
 }

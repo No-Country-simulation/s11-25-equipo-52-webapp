@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import GoogleBtn from "./GoogleBtn";
 
 const userInitialState = {
   name: "",
@@ -96,6 +97,8 @@ export default function LoginForm() {
           </Link>
         </span>
       </div>
+      <hr className="border" />
+      <GoogleBtn />
     </form>
   );
 }
