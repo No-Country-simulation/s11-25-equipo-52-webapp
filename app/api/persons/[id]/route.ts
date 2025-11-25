@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-// import { auth } from "@/lib/auth";
 import { PersonService } from "@/models/person/personService";
 import { PersonUpdateSchema } from "@/models/person/dto/person";
 
@@ -50,7 +49,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
         if (!personFounded) return NextResponse.json({ error: "Person not found" }, { status: 404 });
 
         await personService.deletePerson(id);
-        return NextResponse.json({ message: "Person deleted successfully" }, { status: 200 });
+        return NextResponse.json(null, { status: 204 });
     } catch (error) {
         if (error instanceof Error) return NextResponse.json({ error: error.message }, { status: 400 });
 
