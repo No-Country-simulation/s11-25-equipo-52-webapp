@@ -2,10 +2,15 @@ import prisma from "@/lib/db";
 import { CategoryFullDTO } from "./dto/categoryFull";
 
 export class CreateCategoryFullService {
-
-    async createCategoryFull(data: CategoryFullDTO) {
+    async createCategoryFull(data: CategoryFullDTO, creadoPorId: string, organizacionId: string) {
         return await prisma.$transaction(async (tx) => {
-            const category = await tx.categoria.create({ data: data.category });
+            const category = await tx.categoria.create({
+                data: {
+                    ...data.category,
+                    creadoPorId,
+                    organizacionId,
+                }
+            });
 
             const question = await Promise.all(
                 data.questions.map((question) => {
