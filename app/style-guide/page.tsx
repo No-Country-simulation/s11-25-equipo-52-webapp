@@ -1,19 +1,8 @@
-import {
-  Button,
-  Card,
-  Input,
-  Alert,
-  Navbar,
-  Sidebar,
-  Typography,
-  FormField,
-} from '@/components/ui/design-system';
+import { Button, Card, Input, Alert, Typography } from "@/components/ui/design-system";
 
 export default function StyleGuide() {
   return (
     <div className="p-10 space-y-12">
-      <Navbar />
-
       <h1 className="text-3xl font-bold text-brand-blue">Design System</h1>
 
       <section className="space-y-4">
