@@ -1,11 +1,12 @@
 //Voices Hub completo para la landing page
-
 "use client";
 
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import VoicesHub from "@/app/landing/components/VoicesHub";
-import { ALL_TESTIMONIALS } from "@/app/landing/components/data";
+import { ALL_TESTIMONIALS, testimonialsData } from "@/app/landing/components/data";
+import { TestimonialRender } from "./testimonial_render";
+
 
 export default function VoicesHubPage() {
   return (
@@ -45,8 +46,11 @@ export default function VoicesHubPage() {
 
           {/* VOICES HUB COMPLETO */}
           <div className="mt-16">
+            <TestimonialRender testimonials={testimonialsData} />
             <VoicesHub testimonials={ALL_TESTIMONIALS} />
           </div>
+
+
 
           {/* CTA FINAL */}
           <div className="text-center mt-20 py-16 bg-linear-to-r from-brand-blue to-blue-700 rounded-3xl shadow-lg">

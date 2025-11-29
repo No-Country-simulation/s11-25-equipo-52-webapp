@@ -1,13 +1,13 @@
 //components/ui/testimonial/TestimonialAdmin.tsx
 // 2 variantes: mini / full
 
-import { Card } from "../card"
+//import { Card } from "../card"
 import { RatingStars } from "./ratingStars"
 import { theme } from "../theme"
 import { Heart, Share2 } from "lucide-react";
 
 
-interface AdminTestimonialProps {
+export interface AdminTestimonialProps {
   author: string
   email: string
   role?: string
@@ -104,7 +104,7 @@ export function AdminTestimonial({
 }: AdminTestimonialProps) {
   if (variant === "mini") {
     return (
-      <Card className={`bg-white ${className} `}>
+      <div className={`shadow-md rounded-xl p-4 border border-gray-200 bg-white ${className}`}>
         <div className="flex justify-between items-center mb-3">
           {destacado === "True" && (
             <Heart className="w-4 h-4 text-red-500" fill="currentColor" />
@@ -168,13 +168,13 @@ export function AdminTestimonial({
             <p style={{ color: theme.colors.lightBlue }} className="text-xs">{date}</p>
           </div>
         </div>
-      </Card>
+      </div>
     );
 
   }
 
   return (
-    <Card className={`bg-white ${className} `}>
+    <div className={`shadow-md rounded-xl p-4 border border-gray-200 bg-white ${className}`}>
       <div className="flex justify-between mb-4">
         <div style={{ color: theme.colors.lightBlue }}>
           <p className="font-bold">{author}</p>
@@ -298,7 +298,7 @@ export function AdminTestimonial({
           </div>
         ))
       }
-    </Card >
+    </div >
 
 
   )

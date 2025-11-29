@@ -1,4 +1,210 @@
 import { Testimonial } from "./VoicesHub";
+import type { AdminTestimonialProps } from "@/components/ui/testimonial/Admin";
+
+export const testimonialsData: AdminTestimonialProps[] = [
+  {
+    author: "Universidad Nacional",
+    email: "rector@universidad.edu",
+    role: "Rector",
+    testimonial: {
+      titulo: "Impacto positivo en estudiantes",
+      texto: "EduVoice nos ha permitido recopilar testimonios auténticos de nuestros estudiantes de manera sencilla y profesional.",
+      status: "aprobado",
+      media: {
+        type: "image",
+        previewUrl: "https://img.freepik.com/fotos-premium/educacion-espalda-mujer-negra-celebracion-graduacion-exito-diploma-persona-graduada-nina-titulo-universidad-certificado-conocimiento_590464-186404.jpg",
+      },
+      destacado: "False",
+      rating: 5,
+      date: "Hace 2 días",
+      tags: ["Educación", "Universidad"],
+      history: [
+        { user: 'Elena', message: "aprobó el testimonio", notes: "Tema relevante del evento", time: "2 hours ago" }
+      ],
+    },
+  },
+  {
+    author: "Colegio Privado",
+    email: "directora@colegio.edu",
+    role: "Directora Académica",
+    testimonial: {
+      titulo: "Experiencia intuitiva",
+      texto: "La plataforma es intuitiva y nuestros estudiantes disfrutan dejando sus testimonios sobre sus experiencias.",
+      status: "publicado",
+      media: {
+        type: "video",
+        previewUrl: "https://youtu.be/nva3pL-N5bI?si=1r0c7AyQ39Ex7e4G",
+      },
+      destacado: "True",
+      rating: 5,
+      date: "Hace 3 días",
+      tags: ["Educación", "Testimonios"],
+      history: [
+        { user: 'Admin', message: "archivó el testimonio", time: "10 hours ago" }
+      ],
+    },
+  },
+  {
+    author: "StartupHub Tech",
+    email: "ceo@startuphub.com",
+    role: "CEO & Founder",
+    testimonial: {
+      titulo: "Aumento en social proof",
+      texto: "EduVoice transformó cómo compartimos historias de éxito de nuestros clientes. La herramienta es intuitiva y ha aumentado nuestro social proof en un 250%.",
+      status: "en_revision",
+      destacado: "False",
+      rating: 5,
+      date: "Ayer",
+      tags: ["Tecnología", "Innovación"],
+      history: [],
+    },
+  },
+  {
+    author: "Escuela de Artes",
+    email: "coordinacion@escueladeartes.edu",
+    role: "Coordinadora de Admisiones",
+    testimonial: {
+      texto: "Hemos recopilado más de 50 testimonios en video en solo un mes. Herramienta increíble y fácil de usar.",
+      status: "aprobado",
+      media: {
+        type: "video",
+        previewUrl: "https://youtu.be/nva3pL-N5bI?si=1r0c7AyQ39Ex7e4G",
+      },
+      destacado: "False",
+      rating: 5,
+      date: "Hace 5 días",
+      tags: ["Artes", "Video"],
+      history: [
+        { user: 'Elena', message: "aprobó el testimonio", time: "2 days ago" }
+      ],
+    },
+  },
+  {
+    author: "Bootcamp de Tecnología",
+    email: "fundador@bootcamp.com",
+    role: "Fundador",
+    testimonial: {
+      texto: "Aumentó nuestras inscripciones en 3X con este increíble ROI.",
+      status: "rechazado",
+      media: {
+        type: "image",
+        previewUrl: "https://img.freepik.com/fotos-premium/educacion-espalda-mujer-negra-celebracion-graduacion-exito-diploma-persona-graduada-nina-titulo-universidad-certificado-conocimiento_590464-186404.jpg",
+      },
+      destacado: "True",
+      rating: 5,
+      date: "Hace 2 semanas",
+      tags: ["Tecnología", "Marketing"],
+      history: [
+        { user: 'Admin', message: "rechazó el testimonio", notes: "Contenido inapropiado", time: "5 hours ago" }
+      ],
+    },
+  },
+  {
+    author: "Academia de Idiomas",
+    email: "directora@academiaidiomas.edu",
+    role: "Directora General",
+    testimonial: {
+      texto: "Nuestros profesores y estudiantes recomiendan EduVoice. La mejor inversión en social proof que hemos hecho.",
+      status: "aprobado",
+      destacado: "False",
+      rating: 5,
+      date: "Hace 4 días",
+      tags: ["Idiomas", "Educación"],
+      history: [],
+    },
+  },
+  {
+    author: "Universidad Privada",
+    email: "vicerrector@privada.edu",
+    role: "Vicerrector de Admisiones",
+    testimonial: {
+      texto: "Los testimonios en video son mucho más convincentes que el texto. Nuestras tasas de inscripción han mejorado.",
+      status: "aprobado",
+      media: {
+        type: "video",
+        previewUrl: "https://youtu.be/nva3pL-N5bI?si=1r0c7AyQ39Ex7e4G",
+      },
+      destacado: "False",
+      rating: 5,
+      date: "Hace 6 días",
+      tags: ["Universidad", "Video"],
+      history: [],
+    },
+  },
+  {
+    author: "Centro de Capacitación",
+    email: "gerente@centrocap.com",
+    role: "Gerente de Proyectos",
+    testimonial: {
+      texto: "Resultados excepcionales en poco tiempo.",
+      status: "publicado",
+      media: {
+        type: "image",
+        previewUrl: "https://img.freepik.com/fotos-premium/educacion-espalda-mujer-negra-celebracion-graduacion-exito-diploma-persona-graduada-nina-titulo-universidad-certificado-conocimiento_590464-186404.jpg",
+      },
+      destacado: "True",
+      rating: 5,
+      date: "Hace 1 día",
+      tags: ["Capacitación", "Resultados"],
+      history: [
+        { user: 'Elena', message: "revisó y aprobó", time: "1 hour ago" },
+        { user: 'Admin', message: "publicó el testimonio", time: "30 minutes ago" }
+      ],
+    },
+  },
+  {
+    author: "Instituto de Formación",
+    email: "marketing@institutof.com",
+    role: "Responsable de Marketing",
+    testimonial: {
+      texto: "Excelente herramienta para construir confianza en nuevos prospectos. La recomendamos ampliamente.",
+      status: "en_revision",
+      destacado: "False",
+      rating: 5,
+      date: "Hace 3 horas",
+      tags: ["Marketing"],
+      history: [
+        { user: 'Admin', message: "envió a revisión", time: "4 hours ago" }
+      ],
+    },
+  },
+  {
+    author: "Plataforma de Cursos Online",
+    email: "ceo@platform.com",
+    role: "CEO",
+    testimonial: {
+      texto: "Con EduVoice hemos creado una comunidad de defensores de nuestra marca. Los alumnos aman compartir sus historias.",
+      status: "aprobado",
+      destacado: "False",
+      rating: 5,
+      media: {
+        type: "video",
+        previewUrl: "https://youtu.be/nva3pL-N5bI?si=1r0c7AyQ39Ex7e4G",
+      },
+      date: "Hace 2 horas",
+      tags: ["Cursos", "Comunidad"],
+      history: [],
+    },
+  },
+  {
+    author: "Escuela de Negocios",
+    email: "director@escueladenegocios.com",
+    role: "Director Ejecutivo",
+    testimonial: {
+      texto: "Desde que implementamos EduVoice, nuestro sitio web tiene un 40% más de engagement.",
+      status: "aprobado",
+      destacado: "False",
+      rating: 5,
+      date: "Ayer",
+      tags: ["Negocios", "Engagement"],
+      history: [
+        { user: 'Elena', message: "aprobó el testimonio", time: "3 days ago" }
+      ],
+    },
+  },
+];
+
+
 
 export const ALL_TESTIMONIALS: Testimonial[] = [
   {
