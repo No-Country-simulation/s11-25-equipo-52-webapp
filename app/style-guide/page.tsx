@@ -95,6 +95,7 @@ export default function StyleGuide() {
         <h2 className="text-2xl font-semibold">Testimonial Card: Previsualización para Admin</h2>
         <AdminTestimonial
           testimonial={{
+            titulo: "Respuesta a la página web",
             texto: 'Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.',
             media: {
               type: "image",
@@ -114,6 +115,7 @@ export default function StyleGuide() {
         <h2 className="text-2xl font-semibold">Testimonial Card: Panel moderacion para Admin</h2>
         <AdminTestimonial
           testimonial={{
+            titulo: "Respuesta a la página web",
             texto: 'Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.',
             media: {
               type: "image",
