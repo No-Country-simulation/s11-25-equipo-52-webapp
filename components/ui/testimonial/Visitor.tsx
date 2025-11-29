@@ -1,24 +1,40 @@
 //components/ui/testimonial/TestimonialVisitor.tsx
+
+import { theme } from "../theme";
+import { RatingStars } from "./ratingStars";
+import { Heart } from "lucide-react";
+
+
 interface TestimonialVisitorProps {
   author: string;
   role?: string;
-  media?: {
-    type: "image" | "video";
-    previewUrl: string;
-  };
-  testimonial: string;
-  rating?: number;
-  date: string;
-  className?: string;
+  testimonial: {
+    titulo?: string
+    texto: string
+    media?: {
+      type: "image" | "video";
+      previewUrl: string;
+    };
+    destacado: "False" | "True"
+    rating?: number
+    date: string
+    tags?: string[]
+  }
+  className?: string
 }
 
 export function TestimonialVisitor({
   author,
   role,
-  media,
-  testimonial,
-  rating = 0,
-  date,
+  testimonial: {
+    titulo,
+    texto,
+    media,
+    destacado = "False",
+    rating = 0,
+    date,
+    tags,
+  },
   className = "",
 }: TestimonialVisitorProps) {
   return (
@@ -44,25 +60,43 @@ export function TestimonialVisitor({
 
       <div className="flex justify-between items-center">
         <div className="text-left">
-          <div className="text-yellow-500 text-sm">
-            {"★".repeat(rating) + "☆".repeat(5 - rating)}
-          </div>
+          <RatingStars rating={rating} className="mb-2"></RatingStars>
         </div>
         <div className="text-right">
-          <p className="text-gray-500 text-xs">{date}</p>
+          <p style={{ color: theme.colors.lightBlue }} className="text-xs">{date}</p>
         </div>
       </div>
 
-      <p className="text-sm line-clamp-3 mb-3">
-        {testimonial}
-      </p>
+      <p className="text-sm line-clamp-3 mb-3 font-semibold">{titulo}</p>
+      <p className="text-sm line-clamp-3 mb-3">{texto}</p>
 
       <div className="flex justify-between items-center">
-        <div>
+        <div style={{ color: theme.colors.lightBlue }}>
           <p className="font-semibold text-sm">{author}</p>
-          {role && <p className="text-gray-600 text-xs">{role}</p>}
+          {role && <p className="text-xs">{role}</p>}
         </div>
       </div>
+
+      <div className="flex justify-between items-center mt-3">
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 text-xs justify-center">
+            {tags.map((tag) => (
+              <span key={tag} style={{
+                borderColor: theme.colors.lightBlue,
+                color: theme.colors.lightBlue,
+              }} className="px-2 py-1 border rounded-lg">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {destacado === "True" && (
+          <Heart className="w-4 h-4 text-red-500" fill="currentColor" />
+        )}
+
+      </div>
+
     </div>
   );
 }

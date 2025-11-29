@@ -76,38 +76,60 @@ export default function StyleGuide() {
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Testimonial Card: Visualizacion para Visitante</h2>
         <TestimonialVisitor
-          media={{ type: "image", previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg" }}
-          testimonial='Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.'
           author='Ana García'
           role="Ingeniería de Software"
-          rating={4}
-          date='22 de noviembre de 2025'>
+          testimonial={{
+            titulo: "Respuesta a la página web",
+            texto: 'Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.',
+            media: {
+              type: "image",
+              previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg"
+            },
+            rating: 4,
+            date: '22 de noviembre de 2025',
+            destacado: "True",
+            tags: ["Evento", "Servicio"],
+          }}>
         </TestimonialVisitor>
+
         <h2 className="text-2xl font-semibold">Testimonial Card: Previsualización para Admin</h2>
         <AdminTestimonial
-          tags={["Evento", "Servicio", "Pendiente"]}
-          media={{ type: "image", previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg" }}
-          testimonial='Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.'
+          testimonial={{
+            texto: 'Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.',
+            media: {
+              type: "image",
+              previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg"
+            },
+            rating: 4,
+            status: 'aprobado',
+            date: '22 de noviembre de 2025',
+            tags: ["Evento", "Servicio"],
+            destacado: "True"
+          }}
           author='Ana García'
           role="Ingeniería de Software"
           email="ana.garcia1@email.com"
-          rating={4}
-          date='22 de noviembre de 2025'
-          variant = "mini">
+          variant="mini">
         </AdminTestimonial>
         <h2 className="text-2xl font-semibold">Testimonial Card: Panel moderacion para Admin</h2>
         <AdminTestimonial
-          tags={["Evento", "Servicio", "Pendiente"]}
-          media={{ type: "image", previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg" }}
-          testimonial='Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.'
+          testimonial={{
+            texto: 'Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.',
+            media: {
+              type: "image",
+              previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg"
+            },
+            rating: 4,
+            date: '22 de noviembre de 2025',
+            tags: ["Evento", "Servicio"],
+            status:'borrador',
+            history:[{ user: 'Elena', message: "aprobó el testimonio", notes:"Tema relevante del evento", time: "2 hours ago" }, { user: 'Admin', message: "archivó el testimonio", time: "10 hours ago" }],
+            destacado: "True"
+          }}
           author='Ana García'
           role="Ingeniería de Software"
           email="ana.garcia1@email.com"
-          status='pending'
-          rating={4}
-          date='22 de noviembre de 2025'
-          history={[{user:'Elena',message:"aprobó el testimonio",time:"2 hours ago"},{user:'Admin',message:"archivó el testimonio",time:"10 hours ago"}]}
-          variant = "full">
+          variant="full">
         </AdminTestimonial>
       </section>
 
