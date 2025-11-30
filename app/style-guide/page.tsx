@@ -65,8 +65,10 @@ export default function StyleGuide() {
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Testimonial Card: Visualizacion para Visitante</h2>
         <TestimonialVisitor
-          author='Ana García'
-          role="Ingeniería de Software"
+          person={{
+            nombreCompleto: 'Ana García',
+            role: "Ingeniería de Software"
+          }}
           testimonial={{
             titulo: "Respuesta a la página web",
             texto: 'Una experiencia transformadora que cambió mi carrera. Estoy agradecida por el apoyo que me han otorgado durante mi carrera.',
@@ -74,9 +76,9 @@ export default function StyleGuide() {
               type: "image",
               previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg"
             },
-            rating: 4,
+            calificacion: 4,
             date: '22 de noviembre de 2025',
-            destacado: "True",
+            destacado: true,
             tags: ["Evento", "Servicio"],
           }}>
         </TestimonialVisitor>
@@ -90,15 +92,17 @@ export default function StyleGuide() {
               type: "image",
               previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg"
             },
-            rating: 4,
-            status: 'aprobado',
+            calificacion: 4,
+            estado: 'aprobado',
             date: '22 de noviembre de 2025',
             tags: ["Evento", "Servicio"],
-            destacado: "True"
+            destacado: true
           }}
-          author='Ana García'
-          role="Ingeniería de Software"
-          email="ana.garcia1@email.com"
+          person={{
+            nombreCompleto: 'Ana García',
+            role: "Ingeniería de Software",
+            correo: "ana.garcia1@email.com"
+          }}
           variant="mini">
         </AdminTestimonial>
         <h2 className="text-2xl font-semibold">Testimonial Card: Panel moderacion para Admin</h2>
@@ -110,16 +114,18 @@ export default function StyleGuide() {
               type: "image",
               previewUrl: "https://img.freepik.com/fotos-premium/mujer-feliz-su-dia-graduacion-universidad-educacion-personas-esta-bien-firmar_115086-260.jpg"
             },
-            rating: 4,
+            calificacion: 4,
             date: '22 de noviembre de 2025',
             tags: ["Evento", "Servicio"],
-            status:'borrador',
-            history:[{ user: 'Elena', message: "aprobó el testimonio", notes:"Tema relevante del evento", time: "2 hours ago" }, { user: 'Admin', message: "archivó el testimonio", time: "10 hours ago" }],
-            destacado: "True"
+            estado: 'borrador',
+            history: [{ user: 'Elena', message: "aprobó el testimonio", notes: "Tema relevante del evento", time: "2 hours ago" }, { user: 'Admin', message: "archivó el testimonio", time: "10 hours ago" }],
+            destacado: true
           }}
-          author='Ana García'
-          role="Ingeniería de Software"
-          email="ana.garcia1@email.com"
+          person={{
+            nombreCompleto: 'Ana García',
+            role: "Ingeniería de Software",
+            correo: "ana.garcia1@email.com"
+          }}
           variant="full">
         </AdminTestimonial>
       </section>

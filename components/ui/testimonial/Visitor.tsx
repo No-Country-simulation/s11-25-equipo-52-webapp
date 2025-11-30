@@ -6,8 +6,10 @@ import { Heart } from "lucide-react";
 
 
 interface TestimonialVisitorProps {
-  author: string;
-  role?: string;
+  person: {
+    nombreCompleto: string;
+    role?: string;
+  },
   testimonial: {
     titulo?: string
     texto: string
@@ -15,8 +17,8 @@ interface TestimonialVisitorProps {
       type: "image" | "video";
       previewUrl: string;
     };
-    destacado: "False" | "True"
-    rating?: number
+    destacado: boolean
+    calificacion?: number
     date: string
     tags?: string[]
   }
@@ -24,14 +26,16 @@ interface TestimonialVisitorProps {
 }
 
 export function TestimonialVisitor({
-  author,
-  role,
+  person: {
+    nombreCompleto,
+    role,
+  },
   testimonial: {
     titulo,
     texto,
     media,
-    destacado = "False",
-    rating = 0,
+    destacado = false,
+    calificacion = 0,
     date,
     tags,
   },
@@ -60,7 +64,7 @@ export function TestimonialVisitor({
 
       <div className="flex justify-between items-center">
         <div className="text-left">
-          <RatingStars rating={rating} className="mb-2"></RatingStars>
+          <RatingStars rating={calificacion} className="mb-2"></RatingStars>
         </div>
         <div className="text-right">
           <p style={{ color: theme.colors.lightBlue }} className="text-xs">{date}</p>
@@ -72,7 +76,7 @@ export function TestimonialVisitor({
 
       <div className="flex justify-between items-center">
         <div style={{ color: theme.colors.lightBlue }}>
-          <p className="font-semibold text-sm">{author}</p>
+          <p className="font-semibold text-sm">{nombreCompleto}</p>
           {role && <p className="text-xs">{role}</p>}
         </div>
       </div>
@@ -91,7 +95,7 @@ export function TestimonialVisitor({
           </div>
         )}
 
-        {destacado === "True" && (
+        {destacado === true && (
           <Heart className="w-4 h-4 text-red-500" fill="currentColor" />
         )}
 

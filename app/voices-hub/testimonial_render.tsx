@@ -7,11 +7,29 @@ export function TestimonialRender({ testimonials }) {
       {testimonials.map((item, i) => (
         <TestimonialVisitor
           key={i}
-          author={item.author}
-          role={item.role}
+          person={item.person}
           testimonial={item.testimonial}
         />
       ))}
     </div>
   );
 }
+
+/*
+Estructura de la base de datos para testimonio:
+{
+    "person": {
+        "nombreCompleto": "Martin Perez",
+        "correo": "martin@gmail.com",
+        "fotoUrl": "image.png"
+    },
+    "testimonial": {
+        "categoriaId": "0834877a-8464-48cd-8da3-a9f0e875800a",
+        "titulo": "Respuesta a la página web",
+        "texto": "Estuvo muy malo, y el rendimiento está muy lento",
+        "modalidad": "texto_imagen",
+        "estado": "borrador",
+        "destacado": false,
+        "calificacion": 2
+    }
+}*/

@@ -5,22 +5,32 @@
 import { RatingStars } from "./ratingStars"
 import { theme } from "../theme"
 import { Heart, Share2 } from "lucide-react";
+import { coerce } from "zod";
 
+export type TestimonialStatus =
+| "borrador" 
+| "aprobado" 
+| "rechazado" 
+| "archivado" 
+| "publicado" 
+| "en_revision";
 
 export interface AdminTestimonialProps {
-  author: string
-  email: string
-  role?: string
+  person: {
+    nombreCompleto: string
+    correo: string
+    role?: string
+  };
   testimonial: {
     titulo?: string
     texto: string
-    status: "borrador" | "aprobado" | "rechazado" | "archivado" | "publicado" | "en_revision"
+    estado: TestimonialStatus
     media?: {
       type: "image" | "video";
       previewUrl: string;
     };
-    destacado: "False" | "True"
-    rating?: number
+    destacado: boolean
+    calificacion?: number
     date: string
     tags?: string[]
     history?: {
@@ -34,23 +44,7 @@ export interface AdminTestimonialProps {
   className?: string
 }
 
-/*{
-    "person": {
-        "nombreCompleto": "Martin Perez",
-        "correo": "martin@gmail.com",
-        "fotoUrl": "image.png"
-    },
-    "testimonial": {
-        "categoriaId": "0834877a-8464-48cd-8da3-a9f0e875800a",
-        "titulo": "Respuesta a la página web",
-        "texto": "Estuvo muy malo, y el rendimiento está muy lento",
-        "modalidad": "texto_imagen",
-        "estado": "borrador",
-        "destacado": false,
-        "calificacion": 2
-    }
-}*/
-const statusStyles: Record<AdminTestimonialProps["testimonial"]["status"], { border: string; text: string; label: string }> = {
+const statusStyles: Record<TestimonialStatus, { border: string; text: string; label: string }> = {
   borrador: {
     border: theme.colors.mediumgray,
     text: theme.colors.mediumgray,
@@ -85,16 +79,18 @@ const statusStyles: Record<AdminTestimonialProps["testimonial"]["status"], { bor
 
 
 export function AdminTestimonial({
-  author,
-  role,
-  email,
+  person: {
+    nombreCompleto,
+    role,
+    correo, 
+  },
   testimonial: {
     titulo,
     texto,
-    status = "borrador",
+    estado = "borrador",
     media,
-    destacado = "False",
-    rating = 0,
+    destacado = false,
+    calificacion = 0,
     date,
     tags,
     history = []
@@ -106,7 +102,7 @@ export function AdminTestimonial({
     return (
       <div className={`shadow-md rounded-xl p-4 border border-gray-200 bg-white ${className}`}>
         <div className="flex justify-between items-center mb-3">
-          {destacado === "True" && (
+          {destacado === true && (
             <Heart className="w-4 h-4 text-red-500" fill="currentColor" />
           )}
           {tags && tags.length > 0 && (
@@ -122,10 +118,10 @@ export function AdminTestimonial({
               <button
                 className="px-2 py-1 border rounded-lg text-xs"
                 style={{
-                  borderColor: statusStyles[status].border,
-                  color: statusStyles[status].text,
+                  borderColor: statusStyles[estado].border,
+                  color: statusStyles[estado].text,
                 }}>
-                {statusStyles[status].label}
+                {statusStyles[estado].label}
               </button>
             </div>
           )}
@@ -154,15 +150,15 @@ export function AdminTestimonial({
 
         <div className="flex justify-between items-center">
           <div style={{ color: theme.colors.lightBlue }}>
-            <p className="font-semibold text-sm">{author}</p>
+            <p className="font-semibold text-sm">{nombreCompleto}</p>
             {role && <p className="text-xs">{role}</p>}
-            {email && <p className="text-xs">{email}</p>}
+            {correo && <p className="text-xs">{correo}</p>}
           </div>
         </div>
 
         <div className="flex justify-between items-center">
           <div className="text-left">
-            <RatingStars rating={rating} className="mt-2"></RatingStars>
+            <RatingStars rating={calificacion} className="mt-2"></RatingStars>
           </div>
           <div className="text-right">
             <p style={{ color: theme.colors.lightBlue }} className="text-xs">{date}</p>
@@ -177,9 +173,9 @@ export function AdminTestimonial({
     <div className={`shadow-md rounded-xl p-4 border border-gray-200 bg-white ${className}`}>
       <div className="flex justify-between mb-4">
         <div style={{ color: theme.colors.lightBlue }}>
-          <p className="font-bold">{author}</p>
+          <p className="font-bold">{nombreCompleto}</p>
           {role && <p className="text-sm">{role}</p>}
-          {email && <p className="text-sm">{email}</p>}
+          {correo && <p className="text-sm">{correo}</p>}
         </div>
 
         <div className="text-right">
@@ -187,10 +183,10 @@ export function AdminTestimonial({
           <button
             className="px-2 py-1 border rounded-lg text-xs"
             style={{
-              borderColor: statusStyles[status].border,
-              color: statusStyles[status].text,
+              borderColor: statusStyles[estado].border,
+              color: statusStyles[estado].text,
             }}>
-            {statusStyles[status].label}
+            {statusStyles[estado].label}
           </button>
 
           <p style={{ color: theme.colors.lightBlue }} className="text-xs mt-1">{date}</p>
@@ -204,7 +200,7 @@ export function AdminTestimonial({
       <div className="flex gap-4 mb-4">
 
         <div className="flex-1">
-          <RatingStars rating={rating} className="mb-2"></RatingStars>
+          <RatingStars rating={calificacion} className="mb-2"></RatingStars>
           <p className="font-semibold">{titulo}</p>
           <p>{texto}</p>
         </div>
@@ -269,7 +265,7 @@ export function AdminTestimonial({
         }} className="text-xs border px-2 py-1 rounded flex items-center gap-1">
           <Share2 className="w-4 h-4" />
           Compartir
-          </button>
+        </button>
 
         <button id="destacar" style={{
           borderColor: theme.colors.lightBlue,
