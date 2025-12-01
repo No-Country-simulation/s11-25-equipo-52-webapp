@@ -17,21 +17,15 @@ export const Sidebar = ({ items, isOpen, onClose }: SidebarProps) => {
   return (
     <>
       {/* Overlay en móvil */}
-      {isOpen && (
-        <div
-          onClick={onClose}
-          className="fixed inset-0 bg-black/40 z-30 md:hidden"
-        />
-      )}
+      {isOpen && <div onClick={onClose} className="fixed inset-0 bg-black/40 z-30 md:hidden" />}
 
       <aside
         className={`
           fixed left-0 z-40 w-[260px] h-screen  top-14
           bg-white shadow-xl p-4 rounded-tr-2xl rounded-br-2xl
-          transition-transform duration-300
-          ${isOpen ? 'translate-x-0' : '-translate-x-full'} 
-          md:translate-x-0
-        `}
+          transition-transform duration-300 md:translate-x-0 md:relative`,
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        )}
       >
         <div className="flex flex-col  gap-2">
           {items.map((item) => (

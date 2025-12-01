@@ -1,13 +1,14 @@
-//Wall of love completo para la landing page
-
+//Voices Hub completo para la landing page
 "use client";
 
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import WallOfLove from "@/app/landing/components/WallofLove";
-import { ALL_TESTIMONIALS } from "@/app/landing/components/testimonials-data";
+import VoicesHub from "@/app/landing/components/VoicesHub";
+import { ALL_TESTIMONIALS, testimonialsData } from "@/app/landing/components/data";
+import { TestimonialRender } from "./testimonial_render-visitor";
 
-export default function WallOfLovePage() {
+
+export default function VoicesHubPage() {
   return (
     <main className="min-h-screen bg-brand-blue from-gray-50 to-white">
       {/* Header Navigation */}
@@ -33,7 +34,7 @@ export default function WallOfLovePage() {
             </span>
 
             <h1 className="text-5xl md:text-6xl font-black text-gray-900 mt-6">
-              Wall of Love Completo
+              Voices Hub Completo
             </h1>
 
             <p className="text-gray-600 max-w-3xl mx-auto mt-4 text-lg leading-relaxed">
@@ -43,15 +44,18 @@ export default function WallOfLovePage() {
             </p>
           </div>
 
-          {/* WALL OF LOVE COMPLETO */}
+          {/* VOICES HUB COMPLETO */}
           <div className="mt-16">
-            <WallOfLove testimonials={ALL_TESTIMONIALS} />
+            <TestimonialRender testimonials={testimonialsData} />
+            <VoicesHub testimonials={ALL_TESTIMONIALS} />
           </div>
+
+
 
           {/* CTA FINAL */}
           <div className="text-center mt-20 py-16 bg-linear-to-r from-brand-blue to-blue-700 rounded-3xl shadow-lg">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-              ¿Listo para crear tu propio Wall of Love?
+              ¿Listo para crear tu propio Voices Hub?
             </h2>
 
             <p className="text-blue-100 max-w-2xl mx-auto mb-8">

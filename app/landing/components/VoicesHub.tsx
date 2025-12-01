@@ -19,7 +19,7 @@ export interface Testimonial {
   likes?: number;
 }
 
-export interface WallOfLoveProps {
+export interface VoicesHubProps {
   testimonials: Testimonial[];
 }
 
@@ -90,7 +90,7 @@ export function TarjetaTestimonio({ t }: { t: Testimonial }) {
   );
 }
 
-export default function WallOfLove({ testimonials }: WallOfLoveProps) {
+export default function WallOfLove({ testimonials }: VoicesHubProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-max">
       {testimonials.map((t) => (

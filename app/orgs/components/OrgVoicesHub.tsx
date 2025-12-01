@@ -55,7 +55,7 @@ export default function OrgWallOfLove({ testimonials }: { testimonials: Testimon
         </a>
       </header>
 
-      {/* Hero wall of love */}
+      {/* Hero Voices Hub */}
       <div className="max-w-7xl mx-auto px-6 mt-20 text-center mb-16">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-linear-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
           Conoce la experiencia de nuestra comunidad

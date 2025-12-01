@@ -1,22 +1,18 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export interface SidebarItemProps {
   icon: React.ReactNode;
   label: string;
   href: string;
   badge?: number;
-  active?: boolean;
 }
 
-export const SidebarItem = ({
-  icon,
-  label,
-  href,
-  badge,
-  active,
-}: SidebarItemProps) => {
+export const SidebarItem = ({ icon, label, href, badge }: SidebarItemProps) => {
+  const pathname = usePathname();
+
   return (
     <Link
       href={href}
@@ -27,14 +23,12 @@ export const SidebarItem = ({
           : 'bg-white text-black hover:bg-blue-200'
       }`}
     >
-      <div className="w-6 h-6 flex-shrink-0">{icon}</div>
+      <div className="w-6 h-6 shrink-0">{icon}</div>
 
       <p className={`flex-1 text-base font-medium`}>{label}</p>
 
       {badge !== undefined && (
-        <div className="px-2 py-1 rounded-full bg-[#febc2f] text-xs font-semibold text-black">
-          {badge}
-        </div>
+        <div className="px-2 py-1 rounded-full bg-[#febc2f] text-xs font-semibold text-black">{badge}</div>
       )}
     </Link>
   );

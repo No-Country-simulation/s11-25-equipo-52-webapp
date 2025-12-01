@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import WallOfLove from "./WallofLove";
-import { PREVIEW_TESTIMONIALS } from "./testimonials-data";
+import WallOfLove from "./VoicesHub";
+import { PREVIEW_TESTIMONIALS } from "./data";
 
-export default function WallOfLovePreview() {
+export default function VoicesHubPreview() {
   return (
     <section className="relative py-20 bg-linear-to-b from-white to-gray-50">
       <div className="container mx-auto max-w-7xl px-6">
@@ -25,7 +25,7 @@ export default function WallOfLovePreview() {
           </p>
         </div>
 
-        {/* WALL OF LOVE PREVIEW */}
+        {/* Voices HubPREVIEW */}
         <div className="mt-12">
           <WallOfLove testimonials={PREVIEW_TESTIMONIALS} />
         </div>
@@ -36,7 +36,7 @@ export default function WallOfLovePreview() {
             href="/wall-of-love"
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all duration-300 hover:gap-3"
           >
-            Ver Wall of Love Completo
+            Ver Voices Hub Completo
             <ArrowRight className="w-5 h-5" />
           </Link>
 
