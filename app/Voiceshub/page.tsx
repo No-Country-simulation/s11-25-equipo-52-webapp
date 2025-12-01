@@ -4,10 +4,10 @@
 
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import WallOfLove from "@/app/landing/components/WallofLove";
-import { ALL_TESTIMONIALS } from "@/app/landing/components/testimonials-data";
+import VoicesHub from "@/app/landing/components/VoicesHub";
+import { ALL_TESTIMONIALS } from "@/app/landing/data/dataTestimonios";
 
-export default function WallOfLovePage() {
+export default function VoiceHubPage() {
   return (
     <main className="min-h-screen bg-brand-blue from-gray-50 to-white">
       {/* Header Navigation */}
@@ -45,7 +45,7 @@ export default function WallOfLovePage() {
 
           {/* WALL OF LOVE COMPLETO */}
           <div className="mt-16">
-            <WallOfLove testimonials={ALL_TESTIMONIALS} />
+            <VoicesHub testimonials={ALL_TESTIMONIALS} />
           </div>
 
           {/* CTA FINAL */}
