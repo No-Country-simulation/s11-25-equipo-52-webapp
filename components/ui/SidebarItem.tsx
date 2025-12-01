@@ -8,9 +8,16 @@ export interface SidebarItemProps {
   label: string;
   href: string;
   badge?: number;
+  active?: boolean;
 }
 
-export const SidebarItem = ({ icon, label, href, badge }: SidebarItemProps) => {
+export const SidebarItem = ({
+  icon,
+  label,
+  href,
+  badge,
+  active,
+}: SidebarItemProps) => {
   const pathname = usePathname();
 
   return (
@@ -28,7 +35,9 @@ export const SidebarItem = ({ icon, label, href, badge }: SidebarItemProps) => {
       <p className={`flex-1 text-base font-medium`}>{label}</p>
 
       {badge !== undefined && (
-        <div className="px-2 py-1 rounded-full bg-[#febc2f] text-xs font-semibold text-black">{badge}</div>
+        <div className="px-2 py-1 rounded-full bg-[#febc2f] text-xs font-semibold text-black">
+          {badge}
+        </div>
       )}
     </Link>
   );
