@@ -1,6 +1,6 @@
 import { TestimonialVisitor } from '@/components/ui/testimonial/Visitor';
 import { AdminTestimonial } from '@/components/ui/testimonial/Admin';
-import { Button, Card, Input, Alert, Typography } from "@/components/ui/design-system";
+import { Button, Card, Input, AlertSimple, Typography } from "@/components/ui/design-system";
 
 export default function StyleGuide() {
   return (
@@ -53,8 +53,8 @@ export default function StyleGuide() {
 
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Alerts</h2>
-        <Alert type="info" title="Info" description="Este es un mensaje." />
-        <Alert type="error" title="Error" description="Algo salió mal." />
+        <AlertSimple variant="info" description="Este es un mensaje." />
+        <AlertSimple variant="error" description="Algo salió mal." />
       </section>
 
       <section className="space-y-4">

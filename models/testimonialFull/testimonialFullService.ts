@@ -25,7 +25,8 @@ export class TestimonialFullService {
                 },
             });
 
-            let medio: Medio | null = null;
+            // ✅ Define el tipo correctamente
+            let medio: Awaited<ReturnType<typeof tx.medio.create>> | null = null;
 
             if (data.medio) {
                 medio = await tx.medio.create({
@@ -90,7 +91,7 @@ export class TestimonialFullService {
                     }
                 });
             } else {
-                medio = tx.medio.create({
+                medio = await tx.medio.create({
                     data: {
                         organizacionId,
                         testimonioId: testimonial.id,
