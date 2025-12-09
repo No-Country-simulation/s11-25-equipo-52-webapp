@@ -1,3 +1,4 @@
+
 import { NextRequest, NextResponse } from "next/server";
 import { ReviewService } from "@/models/reviewer/reviewService";
 import { ReviewUpdateSchema } from "@/models/reviewer/dto/review";
@@ -5,7 +6,7 @@ import { ReviewUpdateSchema } from "@/models/reviewer/dto/review";
 const reviewService = new ReviewService();
 
 // Obtiene una revision por ID
-export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }){
     try {
         const { id } = await params;
 
@@ -21,7 +22,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 };
 
 // Actualiza una revision por ID
-export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }){
     try {
         const { id } = await params;
 
@@ -41,7 +42,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 };
 
 // Elimina una revision por ID
-export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }){
     try {
         const { id } = await params;
 

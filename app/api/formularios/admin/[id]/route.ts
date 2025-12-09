@@ -3,6 +3,30 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/db";
 
+/**
+ * @openapi
+ * /api/formulario/admin/{id}:
+ *   delete:
+ *     summary: Elimina un formulario por el ID del administrador
+ *     tags:
+ *       - Formulario
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID del administrador
+ *     responses:
+ *       204:
+ *         description: Formulario eliminado
+ *       400:
+ *         description: Error de validación
+ *       404:
+ *          description: Formulario no encontrado
+ *       500:
+ *          description: Error interno
+ */
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -11,10 +35,7 @@ export async function DELETE(
     // Verificar autenticación
     const session = await auth();
     if (!session?.user?.email) {
-      return NextResponse.json(
-        { error: "No autorizado" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "No autorizado" }, { status: 401 });
     }
 
     // Obtener usuario
@@ -87,7 +108,10 @@ export async function GET(
     });
 
     if (!usuario) {
-      return NextResponse.json({ error: "Usuario no encontrado" }, { status: 404 });
+      return NextResponse.json(
+        { error: "Usuario no encontrado" },
+        { status: 404 }
+      );
     }
 
     const { id } = await params;
@@ -142,7 +166,7 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth();
@@ -162,7 +186,7 @@ export async function PATCH(
       );
     }
 
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
 
     const {
@@ -232,7 +256,7 @@ export async function PATCH(
       await prisma.preguntaFormulario.createMany({
         data: preguntas.map((p: any, index: number) => ({
           formularioId: id,
-          titulo: p.texto.trim(),
+          texto: p.texto.trim(),
           tipo: p.tipo,
           requerida: p.requerida ?? false,
           orden: index,

@@ -12,11 +12,11 @@ export default async function Layout({
 
   if (!session) redirect('/login');
 
-  const role = session?.user?.role ?? 'editor'; //duda aqui
+  const rol = session?.user?.rol ?? 'editor'; //duda aqui
 
   return (
     <DashboardProviders>
-      <DashboardLayout role={role}>{children}</DashboardLayout>
+      <DashboardLayout role={rol}>{children}</DashboardLayout>
     </DashboardProviders>
   );
 }

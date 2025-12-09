@@ -8,10 +8,14 @@ import bcrypt from "bcrypt";
 import { encode as defaultEncode } from "next-auth/jwt";
 import { v4 as uuid } from "uuid";
 
+
 const adapter = PrismaAdapter(prisma);
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   adapter,
+  session: {
+    strategy: "database"
+  },
   providers: [
     Google,
     Credentials({
@@ -32,10 +36,20 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
           });
 
           if (dbUser && dbUser.password) {
-            const passwordMatch = await bcrypt.compare(password, dbUser.password);
+            const passwordMatch = await bcrypt.compare(
+              password,
+              dbUser.password
+            );
 
             if (passwordMatch) {
-              return dbUser;
+              //  Devuelve solo las propiedades que NextAuth espera
+              return {
+                id: dbUser.id,
+                name: dbUser.name,
+                email: dbUser.email,
+                image: dbUser.image,
+                emailVerified: dbUser.emailVerified,
+              };
             }
           }
         }
@@ -45,11 +59,34 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, account }) {
+    async jwt({ token, account, user }) {
       if (account?.provider === "credentials") {
         token.credentials = true;
       }
+
+      // Agrega propiedades personalizadas al token
+      if (user) {
+        const dbUser = await prisma.user.findUnique({
+          where: { id: user.id },
+        });
+
+        if (dbUser) {
+          token.rol = dbUser.rol;
+          token.activo = dbUser.activo;
+          token.organizacionId = dbUser.organizacionId;
+        }
+      }
+
       return token;
+    },
+    async session({ session, token }) {
+      // Agrega propiedades del token a la sesión
+      if (token && session.user) {
+        session.user.rol = token.rol;
+        session.user.activo = token.activo;
+        session.user.organizacionId = token.organizacionId;
+      }
+      return session;
     },
   },
   jwt: {

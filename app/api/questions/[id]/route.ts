@@ -5,6 +5,34 @@ import { QuestionUpdateSchema } from "@/models/question/dto/question";
 
 const questionService = new QuestionService();
 
+/**
+ * @openapi
+ * /api/questions/{id}:
+ *   get:
+ *     summary: Obtiene una pregunta por su ID
+ *     tags:
+ *       - Pregunta
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID de la pregunta
+ *     responses:
+ *       200:
+ *         description: Pregunta obtenida
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/QuestionCreateSchema'
+ *       400:
+ *         description: Error de validación
+ *       404:
+ *         description: Pregunta no encontrada
+ *       500:
+ *         description: Error interno
+ */
 // Obtiene una pregunta por ID
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const session = await auth();
@@ -24,6 +52,38 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     }
 };
 
+/**
+ * @openapi
+ * /api/questions/{id}:
+ *   put:
+ *     summary: Actualiza una pregunta por su ID
+ *     tags:
+ *       - Pregunta
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID de la pregunta
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/QuestionUpdateSchema'
+ *     responses:
+ *       200:
+ *         description: Pregunta actualizada
+ *       400:
+ *         description: Error de validación
+ *       401:
+ *         description: No autorizado
+ *       404:
+ *          description: Pregunta no encontrada
+ *       500:
+ *         description: Error interno
+ */
 // Actualiza una pregunta por ID
 export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const session = await auth();
@@ -47,6 +107,30 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     }
 };
 
+/**
+ * @openapi
+ * /api/questions/{id}:
+ *   delete:
+ *     summary: Elimina una pregunta por su ID
+ *     tags:
+ *       - Pregunta
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID de la pregunta
+ *     responses:
+ *       204:
+ *         description: Pregunta eliminada
+ *       400:
+ *         description: Error de validación
+ *       404:
+ *          description: Pregunta no encontrada
+ *       500:
+ *          description: Error interno
+ */
 // Elimina una pregunta por ID
 export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const session = await auth();
