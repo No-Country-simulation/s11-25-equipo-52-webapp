@@ -8,7 +8,7 @@ import bcrypt from "bcrypt";
 import { encode as defaultEncode } from "next-auth/jwt";
 import { v4 as uuid } from "uuid";
 
-// @ts-expect-error - Prisma adapter has type issues with complex schemas
+
 const adapter = PrismaAdapter(prisma);
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
