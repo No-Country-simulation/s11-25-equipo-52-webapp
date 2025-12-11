@@ -2,10 +2,12 @@
 "use client";
 
 import { usePerfil } from "@/hooks/swr/usePerfil";
+import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 
 export default function ProfileCard() {
   const { perfil, isLoading, isError, error, updatePerfil, refreshPerfil } = usePerfil();
+  const { data: session } = useSession();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -15,6 +17,9 @@ export default function ProfileCard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  // Verificar si el usuario es editor
+  const isEditor = (session?.user as any)?.rol === "editor";
 
   // Refrescar perfil cuando el componente monta
   useEffect(() => {
@@ -231,10 +236,16 @@ export default function ProfileCard() {
                   name="activo"
                   checked={formData.activo}
                   onChange={handleInputChange}
-                  className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500"
+                  disabled={isEditor}
+                  className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <span className="ml-2 text-sm font-medium text-gray-700">Cuenta Activa</span>
               </label>
+              {isEditor && (
+                <p className="text-sm text-gray-500 mt-1">
+                  Los editores no pueden cambiar el estado de su cuenta. Contacta al administrador.
+                </p>
+              )}
             </div>
 
             <div className="flex gap-3 pt-4">
