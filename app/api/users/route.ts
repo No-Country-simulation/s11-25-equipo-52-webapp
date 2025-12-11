@@ -79,6 +79,22 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   }
 }
 
+/**
+ * @openapi
+ * /api/users:
+ *   get:
+ *     summary: Obtiene todos los usuarios tanto admins como editores
+ *     tags:
+ *       - Usuario
+ *     responses:
+ *       200:
+ *         description: Usuarios obtenidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/QuestionCreateSchema'
+ */
+// Obtiene todos los usuarios tanto admins como editores
 export async function GET() {
   try {
     // Verificar autenticación
