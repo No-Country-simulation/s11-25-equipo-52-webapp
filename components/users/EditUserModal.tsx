@@ -44,7 +44,7 @@ export function EditUserModal({ isOpen, onClose, user }: EditUserModalProps) {
     defaultValues: {
       name: user.name,
       activo: user.status === "active",
-      categoriaAsignadaId: "",
+      categoriaAsignadaId: user.category || "",
     },
   });
 
